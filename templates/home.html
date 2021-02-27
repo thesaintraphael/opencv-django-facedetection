@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Music Controller</title>
+    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static "css/index.css" %}"
+    />
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  </head>
+  <body>
+    <div id="gradient">
+      <div id="main">
+
+        <div id="app" >
+
+            <div class="center">
+                <div id="camera"></div>
+                <div id="but"><button type="button" class="btn btn-primary" onclick="open_camera()">Open Camera</button></div>
+            </div>
+        </div>
+      </div>
+      </div>
+
+    <script>
+        var wrapper_camera = document.getElementById('camera');
+        var wrapper_button = document.getElementById('but');
+
+        function open_camera(){
+            wrapper_camera = document.getElementById('camera');
+            wrapper_camera.innerHTML = `<img id="bg" src="{% url 'camera_live' %}">`;
+            wrapper_button.innerHTML = '<button type="button" class="btn btn-danger" onclick="close_camera()">Close Camera</button>';
+        }
+
+        function close_camera(){
+            wrapper_camera.innerHTML = ``;
+            wrapper_button.innerHTML = `<button type="button" class="btn btn-primary" onclick="open_camera()">Open Camera</button>`;
+        }
+
+    </script>
+
+    <script src="{% static "js/index.js" %}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>
